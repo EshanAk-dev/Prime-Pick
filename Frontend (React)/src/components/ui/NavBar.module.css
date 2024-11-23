@@ -1,0 +1,11 @@
+@media (max-width: 100px){
+    .responsiveCart{
+        margin: 20px;
+    }
+}
+
+.stickyNavBar{
+    position: sticky !important;
+    top: 0;
+    z-index: 1030;
+}
