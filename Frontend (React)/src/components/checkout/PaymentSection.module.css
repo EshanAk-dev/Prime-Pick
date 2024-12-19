@@ -1,0 +1,61 @@
+/* Button styles */
+.paypalButton, .flutterwaveButton {
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow to buttons */
+}
+
+/* Flutterwave button specific styles */
+.flutterwaveButton {
+    background-color: #f89500;
+    border: none;
+    color: white;
+}
+
+/* Hover effects for buttons */
+.paypalButton:hover, .flutterwaveButton:hover {
+    opacity: 0.9;
+    transform: scale(1.02); /* Add scaling */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+}
+
+/* Card styling */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Add hover effect for card */
+.card:hover {
+    transform: scale(1.02); /* Add scaling */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+}
+
+/* Order item styling (optional reuse from OrderItem.module.css) */
+.orderItem {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Order item hover effect */
+.orderItem:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02); /* Add scaling */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .paypalButton, .flutterwaveButton {
+        font-size: 1rem;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Adjust shadow for smaller screens */
+    }
+    .card {
+        border-radius: 8px;
+    }
+}
