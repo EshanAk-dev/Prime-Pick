@@ -1,6 +1,83 @@
-import { BASE_URL } from "../../api";
+import { useState } from "react";
+import api, { BASE_URL } from "../../api";
+import { toast } from "react-toastify";
 
-const CartItem = ({item}) => {
+const CartItem = ({
+  item,
+  setCartTotal,
+  cartItems,
+  setNumCartItems,
+  setCartItems,
+}) => {
+  const [quantity, setQuantity] = useState(item.quantity);
+  const [loading, setLoading] = useState(false);
+  const itemData = { quantity: quantity, item_id: item.id };
+  const itemId = { item_id: item.id };
+
+  function deleteCartItem() {
+    const confirmDelete = window.confirm(
+      "Are you want to delete this cart item?"
+    );
+    console.log(itemId);
+
+    if (confirmDelete) {
+      api
+        .post("delete_cartitem/", itemId)
+        .then((res) => {
+          console.log(res.data);
+          toast.success("Cart Item deleted successfully!");
+          
+          setCartItems(cartItems.filter((CartItem) => CartItem.id != item.id)); //Filter cart items
+
+          setCartTotal(
+            cartItems
+              .filter((CartItem) => CartItem.id != item.id)
+              .reduce((acc, curr) => acc + curr.total, 0)
+          );
+
+          setNumCartItems(
+            cartItems
+              .filter((CartItem) => CartItem.id != item.id)
+              .reduce((acc, curr) => acc + curr.quantity, 0)
+          );
+        })
+
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+  }
+
+  function updateCartitem() {
+    setLoading(true);
+    api
+      .patch("update_quantity/", itemData)
+      .then((res) => {
+        console.log(res.data);
+        setLoading(false);
+        toast.success("Cart Item updated successfully!");
+
+        const updatedCartItems = cartItems.map((CartItem) =>
+          CartItem.id === item.id ? res.data.data : CartItem
+        );
+
+        setCartItems(updatedCartItems);
+
+        setCartTotal(
+          updatedCartItems.reduce((acc, curr) => acc + curr.total, 0)
+        );
+
+        setNumCartItems(
+          updatedCartItems.reduce((acc, curr) => acc + curr.quantity, 0)
+        );
+      })
+
+      .catch((err) => {
+        console.log(err.message);
+        setLoading(false);
+      });
+  }
+
   return (
     <div
       className="cart-item d-flex align-items-center mb-3 p-3"
@@ -56,8 +133,10 @@ const CartItem = ({item}) => {
       <div className="d-flex align-items-center">
         <input
           type="number"
+          min="1"
           className="form-control me-3"
-          defaultValue="1"
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)} //Change quantity
           style={{
             width: "70px",
             textAlign: "center",
@@ -67,6 +146,7 @@ const CartItem = ({item}) => {
         />
         <button
           className="btn btn-primary btn-sm"
+          onClick={updateCartitem} //Call updateCartitem function to update quantity
           style={{
             display: "flex",
             alignItems: "center",
@@ -75,13 +155,24 @@ const CartItem = ({item}) => {
             padding: "5px 10px",
             marginRight: "10px",
           }}
+          disabled={loading}
         >
-          <i className="bi bi-arrow-repeat" style={{ fontSize: "1rem" }}></i>{" "}
-          Update Quantity
+          {loading ? (
+            "Updating..."
+          ) : (
+            <>
+              <i
+                className="bi bi-arrow-repeat"
+                style={{ fontSize: "1rem" }}
+              ></i>{" "}
+              Update Quantity
+            </>
+          )}
         </button>
 
         <button
           className="btn btn-danger btn-sm"
+          onClick={deleteCartItem}
           style={{
             display: "flex",
             alignItems: "center",
