@@ -6,6 +6,7 @@ import { BASE_URL } from "../../api";
 import api from "../../api";
 import { FaCartShopping } from "react-icons/fa6";
 import "./ProductPage.css";
+import { toast } from "react-toastify";
 
 const ProductPage = ({ setNumCartItems }) => {
   const { slug } = useParams();
@@ -37,6 +38,7 @@ const ProductPage = ({ setNumCartItems }) => {
       .then((res) => {
         console.log(res.data);
         setInCart(true);
+        toast.success("Product added to cart!")
         setNumCartItems((curr) => curr + 1);
       })
       .catch((err) => {
