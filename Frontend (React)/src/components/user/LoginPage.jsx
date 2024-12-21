@@ -43,7 +43,7 @@ const LoginPage = () => {
 
         .catch(err => {
             console.log(err.message)
-            setError(err.message)
+            setError("Username or password incorrect!")
             setLoading(false)
             toast.error("Username or password incorrect!")
         })
@@ -53,7 +53,7 @@ const LoginPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.loginBox}>
-         {/* {error && <Error />} */}
+         {error && <Error message={error} />}
         <h2 className={styles.title}>Welcome</h2>
         <p className={styles.subtitle}>Please login to your account</p>
         <form onSubmit={handleSubmit} className={styles.form}>
