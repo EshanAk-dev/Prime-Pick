@@ -1,8 +1,10 @@
-const Error = ({error}) => {
+const Error = ({ message }) => {
   return (
-    <div className="alert alert-danger my-5" role="alert">
-      {error}
-    </div>
+    message && (
+      <div className="alert alert-danger my-2 d-flex justify-content-center align-items-center" role="alert">
+        {message}
+      </div>
+    )
   );
 };
 
