@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 1000px;
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.orderId {
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 14px;
+  color: #777;
+}
+
+.content {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.productImage {
+  flex-shrink: 0; /* Prevent the image from shrinking */
+  margin-right: 50px; /* Space between image and text */
+}
+
+.image {
+  width: 100px; /* Adjust size of the image */
+  height: 100px; /* Ensure the image is square */
+  object-fit: cover; /* Ensures the image covers the space without distortion */
+  border-radius: 8px; /* Optional: rounded corners for the image */
+}
+
+.details {
+  flex-grow: 1; /* Allows the text content to take remaining space */
+}
+
+.itemName,
+.quantity,
+.price {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.footer {
+  text-align: right;
+}
+
+.status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status.pending {
+  background-color: #ff9800;
+  color: #fff;
+}
+
+.status.completed {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.status.cancelled {
+  background-color: #f44336;
+  color: #fff;
+}
