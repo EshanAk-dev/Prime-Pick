@@ -1,7 +1,3 @@
-Here’s a clean, professional `README.md` for your **E-commerce Website** built with a **Django backend** and **React frontend**:
-
----
-
 # 🛒 E-Commerce Website
 
 A full-featured **E-commerce web application** built with a **React.js frontend** and a **Django backend**, providing a scalable and responsive online shopping experience.
@@ -15,14 +11,13 @@ A full-featured **E-commerce web application** built with a **React.js frontend*
 * **Python**
 * **Django** – Web framework for APIs and business logic
 * **Django REST Framework (DRF)** – For building RESTful APIs
-* **PostgreSQL / SQLite** – Database (customizable)
+* **MySQL** – Database (customizable)
 
 ### 🎨 Frontend
 
 * **React.js** – For interactive UI
 * **Axios** – For API calls
 * **React Router** – For navigation
-* **Tailwind CSS / CSS Modules** – (Optional) for styling
 
 ---
 
